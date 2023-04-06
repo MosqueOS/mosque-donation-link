@@ -17,14 +17,21 @@ type Mosque = {
   name: string | undefined
 }
 
-const customer: Mosque = {
-  name: process.env.NEXT_PUBLIC_MOSQUE_NAME,
-}
-const baseUrl = process.env.APP_URL ? process.env.APP_URL : "https://mosque.fund"
 const donationAmounts: any = {
   0: -1,
   5: 500,
   10: 1000,
+}
+
+const customer: Mosque = {
+  name: process.env.NEXT_PUBLIC_MOSQUE_NAME,
+}
+
+const baseUrl = process.env.APP_URL ? process.env.APP_URL : "https://mosque.fund"
+const successUrl = `${baseUrl}/success?id={CHECKOUT_SESSION_ID}`
+const cancelUrl = `${baseUrl}?cancelled=true`
+const metadata = {
+  customer_url: baseUrl,
 }
 
 export default async function checkoutAPI(req: NextApiRequest, res: NextApiResponse) {
@@ -34,7 +41,7 @@ export default async function checkoutAPI(req: NextApiRequest, res: NextApiRespo
   let lineItems: LineItem[] = []
   let amount: number | null =
     data.amount && donationAmounts[data.amount] ? donationAmounts[data.amount] : null
-  let customAmount: number | boolean = data.amount ? parseInt(data.amount) : false
+  let customAmount: number | boolean = data.custom_amount ? parseInt(data.custom_amount) : false
 
   if (amount === -1 && customAmount) {
     amount = customAmount * 100
@@ -64,15 +71,6 @@ export default async function checkoutAPI(req: NextApiRequest, res: NextApiRespo
       quantity: 1,
     })
   }
-
-  const successUrl = `${baseUrl}/success?id={CHECKOUT_SESSION_ID}`
-  const cancelUrl = `${baseUrl}?cancelled=true`
-
-  const metadata = {
-    customer_url: baseUrl,
-  }
-
-  const application_fee_amount = amount * 0.1 + 50
 
   const session = await stripe.checkout.sessions.create({
     success_url: successUrl,
