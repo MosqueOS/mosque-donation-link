@@ -1,4 +1,5 @@
 import DonationBucket from "@/components/DonationBucket/DonationBucket"
+import Footer from "@/components/Footer/Footer"
 import Head from "next/head"
 
 type Mosque = {
@@ -47,6 +48,7 @@ export default function Home({ mosque }: { mosque: Mosque }) {
             </button>
           </form>
         </div>
+        <Footer />
       </main>
     </>
   )
