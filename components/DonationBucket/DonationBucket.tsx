@@ -118,7 +118,7 @@ export default function DonationBucket() {
               id="custom_amount"
               className="my-5 block w-full shadow-sm py-3 px-4 pl-12 placeholder-text-lg placeholder-gray-300 focus:ring-indigo-500 focus:border-indigo-700 border-gray-700 rounded-md font-medium text-2xl"
               min={1}
-              max={1000000}
+              max={100000}
               autoFocus
               pattern="\d*"
               onChange={customAmountChanged}
