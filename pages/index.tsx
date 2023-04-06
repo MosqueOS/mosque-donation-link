@@ -27,7 +27,6 @@ export default function Home({ mosque }: { mosque: Mosque }) {
         <title>{`${mosque.name} |  Mosque Fund`}</title>
         <meta name="description" content={`${mosque.name} | Mosque fundraising platform`} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
         <div className="flex flex-col items-center justify-center w-full flex-1 px-20 mb-5 mt-5">

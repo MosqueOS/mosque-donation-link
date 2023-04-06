@@ -26,7 +26,6 @@ function PaySuccess({ mosque }: { mosque: Mosque }) {
     <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-gray-50">
       <Head>
         <title>{`${mosque.name} |  Mosque Fund`}</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className="flex flex-col items-center justify-center w-full flex-1 px-20">
