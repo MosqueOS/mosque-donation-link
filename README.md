@@ -1,4 +1,12 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Mosque Fundraising Link
+
+This application allows mosques to create a online fundraising link that can be shared with everyone.
+
+## Example App
+
+<img src="/public/rmt.mosque.fund.png"
+     alt="Example Mosque.Fund app screenshot"
+     width="500px" />
 
 ## Getting Started
 
