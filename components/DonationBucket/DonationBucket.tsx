@@ -52,7 +52,7 @@ export default function DonationBucket() {
               className={({ checked, active }) =>
                 classNames(
                   checked ? "border-transparent" : "border-gray-300",
-                  active ? "ring-2 ring-qip" : "",
+                  active ? "ring-2 ring-indigo-700" : "",
                   "relative bg-white border rounded-lg shadow-sm p-4 flex cursor-pointer focus:outline-none w-full",
                 )
               }
@@ -116,7 +116,7 @@ export default function DonationBucket() {
               type="number"
               name="custom_amount"
               id="custom_amount"
-              className="my-5 block w-full shadow-sm py-3 px-4 pl-12 placeholder-text-lg placeholder-gray-300 focus:ring-indigo-500 focus:border-indigo-500 border-gray-700 rounded-md font-medium text-2xl"
+              className="my-5 block w-full shadow-sm py-3 px-4 pl-12 placeholder-text-lg placeholder-gray-300 focus:ring-indigo-500 focus:border-indigo-700 border-gray-700 rounded-md font-medium text-2xl"
               min={1}
               max={1000000}
               autoFocus
@@ -135,7 +135,7 @@ export default function DonationBucket() {
               aria-describedby="uplift-description"
               name="uplift"
               type="checkbox"
-              className="focus:ring-qip h-6 w-6 text-qip border-gray-300 rounded"
+              className="focus:ring-indigo-700 h-6 w-6 text-indigo-700 border-gray-300 rounded"
               value={1}
             />
           </div>
