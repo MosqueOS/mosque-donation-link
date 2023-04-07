@@ -24,7 +24,8 @@ export default function DonationBucket() {
 
   let calculateFee = (amount = feeAmount) => {
     if (!amount) return 0
-    let fee = amount * 0.03 + 0.2
+
+    let fee = amount * 0.015 + 0.2
     return fee.toFixed(2)
   }
 
