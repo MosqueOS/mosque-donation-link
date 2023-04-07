@@ -8,7 +8,15 @@ This application allows mosques to create a unique link that can be shared with 
      alt="Example Mosque.Fund app screenshot"
      width="500px" />
 
-## Getting Started
+## Creating a link for your own mosque
+
+1. Create a [Stripe Account](https://dashboard.stripe.com/register)
+2. Create a [Stripe API Secret Key](https://dashboard.stripe.com/apikeys)
+3. Click on the deploy button below to fork and deploy your own instance:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMosqueOS%2Fmosque-donation-link&env=APP_URL,STRIPE_KEY,NEXT_PUBLIC_MOSQUE_NAME,NEXT_PUBLIC_MOSQUE_LOGO_URL&project-name=mosque-donation-link&repository-name=mosque-donation-link)
+
+## Setting up local dev environment
 
 Copy env file:
 
