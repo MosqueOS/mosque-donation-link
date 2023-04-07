@@ -24,8 +24,8 @@ export default function Home({ mosque }: { mosque: Mosque }) {
   return (
     <>
       <Head>
-        <title>{`${mosque.name} |  Mosque Fund`}</title>
-        <meta name="description" content={`${mosque.name} | Mosque fundraising platform`} />
+        <title>{`${mosque.name} | Mosque Donation Link`}</title>
+        <meta name="description" content={`${mosque.name} | Mosque Donation Link`} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main>
