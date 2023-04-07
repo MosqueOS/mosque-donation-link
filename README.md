@@ -4,9 +4,8 @@ This application allows mosques to create a unique link that can be shared with 
 
 ## Example App
 
-<img src="/public/rmt.mosque.fund.png"
-     alt="Example Mosque.Fund app screenshot"
-     width="500px" />
+<img src="/public/demo-screenshot.png"
+     alt="Example Mosque.Fund app screenshot" />
 
 ## Creating a link for your own mosque
 
