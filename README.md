@@ -1,6 +1,6 @@
-# Mosque Fundraising Link
+# Mosque Donation Link
 
-This application allows mosques to create a online fundraising link that can be shared with everyone.
+This application allows mosques to create a unique link that can be shared with donors to collect donations online.
 
 ## Example App
 
