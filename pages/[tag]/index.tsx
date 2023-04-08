@@ -1,5 +1,6 @@
 import DonationForm from "@/components/DonationForm/DonationForm"
 import Footer from "@/components/Footer/Footer"
+import { startCase } from "lodash"
 import Head from "next/head"
 
 type Mosque = {
@@ -25,7 +26,7 @@ export default function Home({ mosque, tag }: { mosque: Mosque; tag: string }) {
   return (
     <>
       <Head>
-        <title>{`${mosque.name} | Mosque Donation Link`}</title>
+        <title>{`Donation for ${startCase(tag)} | ${mosque.name} | Mosque Donation Link`}</title>
         <meta name="description" content={`${mosque.name} | Mosque Donation Link`} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
