@@ -4,6 +4,7 @@ type DonationBody = {
   amount?: string
   custom_amount?: string
   uplift?: string
+  tag?: string
 }
 
 type LineItem = {
@@ -30,9 +31,6 @@ const customer: Mosque = {
 const baseUrl = process.env.APP_URL ? process.env.APP_URL : "https://mosque.fund"
 const successUrl = `${baseUrl}/success?id={CHECKOUT_SESSION_ID}`
 const cancelUrl = `${baseUrl}?cancelled=true`
-const metadata = {
-  customer_url: baseUrl,
-}
 
 export default async function checkoutAPI(req: NextApiRequest, res: NextApiResponse) {
   const stripe = require("stripe")(process.env.STRIPE_KEY)
@@ -42,6 +40,11 @@ export default async function checkoutAPI(req: NextApiRequest, res: NextApiRespo
   let amount: number | null =
     data.amount && donationAmounts[data.amount] ? donationAmounts[data.amount] : null
   let customAmount: number | boolean = data.custom_amount ? parseInt(data.custom_amount) : false
+
+  const metadata = {
+    donation_url: `${baseUrl}/${data.tag !== "general-donation" ? data.tag : ""}`,
+    donation_tag: data.tag,
+  }
 
   if (amount === -1 && customAmount) {
     amount = customAmount * 100
