@@ -7,7 +7,7 @@ type Mosque = {
   logo: string | undefined
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps({ query }: any) {
   const mosque: Mosque = {
     name: process.env.NEXT_PUBLIC_MOSQUE_NAME,
     logo: process.env.NEXT_PUBLIC_MOSQUE_LOGO_URL,
@@ -16,11 +16,12 @@ export async function getStaticProps() {
   return {
     props: {
       mosque,
+      tag: query.tag,
     },
   }
 }
 
-export default function Home({ mosque }: { mosque: Mosque }) {
+export default function Home({ mosque, tag }: { mosque: Mosque; tag: string }) {
   return (
     <>
       <Head>
@@ -29,7 +30,7 @@ export default function Home({ mosque }: { mosque: Mosque }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main>
-        <DonationForm mosque={mosque} />
+        <DonationForm mosque={mosque} tag={tag} />
         <Footer />
       </main>
     </>
