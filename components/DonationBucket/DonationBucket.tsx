@@ -150,6 +150,27 @@ export default function DonationBucket() {
           </div>
         </div>
       </fieldset>
+
+      <fieldset className="space-y-5 my-4">
+        <legend className="sr-only">Repeat my donation monthly</legend>
+        <div className="relative flex items-start">
+          <div className="flex items-center h-5">
+            <input
+              id="mode"
+              aria-describedby="mode-description"
+              name="mode"
+              type="checkbox"
+              className="focus:ring-indigo-700 h-6 w-6 text-indigo-700 border-gray-300 rounded"
+              value={"subscription"}
+            />
+          </div>
+          <div className="ml-3 text-sm">
+            <label htmlFor="mode" className="font-medium text-gray-700">
+              Automatically send the same amount every month.
+            </label>
+          </div>
+        </div>
+      </fieldset>
     </>
   )
 }
