@@ -19,7 +19,8 @@ export default function DonationForm({ mosque, tag }: { mosque: Mosque; tag?: st
         <h1 className="mb-4 text-xl md:text-3xl font-bold">{mosque.name}</h1>
         {tag && (
           <p className="mt-6 text-sm shadow p-4 bg-white rounded">
-            Your donation will be used for: <strong>{startCase(tag)}</strong>
+            <span className="sr-only">Your donation will be used for:</span>{" "}
+            <strong>{startCase(tag)}</strong>
           </p>
         )}
       </div>
