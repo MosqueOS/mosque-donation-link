@@ -9,8 +9,8 @@ type DonationAmount = {
 }
 
 const donationAmounts: DonationAmount[] = [
-  { id: 5, title: "£5", description: "Donate £5" },
   { id: 10, title: "£10", description: "Donate £10" },
+  { id: 20, title: "£20", description: "Donate £20" },
   { id: 0, title: "Other", description: "Donate a custom amount" },
 ]
 
