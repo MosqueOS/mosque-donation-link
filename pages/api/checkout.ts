@@ -8,10 +8,20 @@ type DonationBody = {
 }
 
 type LineItem = {
-  amount: number
-  name: string
-  currency: string
+  price_data: PriceData
   quantity: number
+}
+
+type PriceData = {
+  currency: string
+  unit_amount: number
+  product_data: ProductData
+}
+
+type ProductData = {
+  name: string
+  description?: string
+  images?: string[]
 }
 
 type Mosque = {
@@ -56,9 +66,14 @@ export default async function checkoutAPI(req: NextApiRequest, res: NextApiRespo
   }
 
   lineItems.push({
-    amount: amount,
-    name: "Donation amount",
-    currency: "GBP",
+    price_data: {
+      currency: "GBP",
+      unit_amount: amount,
+      product_data: {
+        name: "Donation amount",
+        description: `Donation to ${process.env.NEXT_PUBLIC_MOSQUE_NAME}`,
+      },
+    },
     quantity: 1,
   })
 
@@ -68,9 +83,14 @@ export default async function checkoutAPI(req: NextApiRequest, res: NextApiRespo
     fee = fee.toFixed(0)
 
     lineItems.push({
-      amount: fee,
-      name: "Help cover the costs",
-      currency: "GBP",
+      price_data: {
+        currency: "GBP",
+        unit_amount: fee,
+        product_data: {
+          name: "Help cover the costs",
+          description: "Covers transaction costs incurred by this donation",
+        },
+      },
       quantity: 1,
     })
   }
