@@ -78,7 +78,7 @@ export default async function checkoutAPI(req: NextApiRequest, res: NextApiRespo
   })
 
   if (uplift) {
-    let fee: any = (amount / 100) * 0.03 + 0.2
+    let fee: any = (amount / 100) * 0.015 + 0.2
     fee = fee.toFixed(2) * 100
     fee = fee.toFixed(0)
 
