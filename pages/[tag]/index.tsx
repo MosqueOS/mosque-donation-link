@@ -1,7 +1,10 @@
 import DonationForm from "@/components/DonationForm/DonationForm"
+import DonationTypeSwitch from "@/components/DonationTypeSwitch/DonationTypeSwitch"
 import Footer from "@/components/Footer/Footer"
+import RegularDonationForm from "@/components/RegularDonationForm/RegularDonationForm"
 import { startCase } from "lodash"
 import Head from "next/head"
+import { useState } from "react"
 
 type Mosque = {
   name: string | undefined
@@ -22,7 +25,22 @@ export async function getServerSideProps({ query }: any) {
   }
 }
 
+interface Tab {
+  name: string
+  href: string
+  current: boolean
+}
+
+const regularDonationsActivated = process.env.NEXT_PUBLIC_REGULAR_DONATION_ENABLED === "true"
+
 export default function Home({ mosque, tag }: { mosque: Mosque; tag: string }) {
+  const [activeTab, setActiveTab] = useState("One-off")
+
+  let tabs: Tab[] = [
+    { name: "One-off", href: "#one-off", current: activeTab === "One-off" },
+    { name: "Monthly", href: "#monthly", current: activeTab === "Monthly" },
+  ]
+
   return (
     <>
       <Head>
@@ -48,7 +66,11 @@ export default function Home({ mosque, tag }: { mosque: Mosque; tag: string }) {
             )}
           </div>
         </div>
-        <DonationForm mosque={mosque} tag={tag} />
+        {regularDonationsActivated ? (
+          <DonationTypeSwitch tabs={tabs} setActiveTab={setActiveTab} />
+        ) : null}
+        {activeTab === "One-off" ? <DonationForm mosque={mosque} tag={tag} /> : null}
+        {activeTab === "Monthly" ? <RegularDonationForm mosque={mosque} tag={tag} /> : null}
         <Footer />
       </main>
     </>
