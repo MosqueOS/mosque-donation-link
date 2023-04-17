@@ -8,7 +8,7 @@ type Mosque = {
 export default function RegularDonationForm({ mosque, tag }: { mosque: Mosque; tag?: string }) {
   return (
     <div className="flex flex-col items-center justify-center w-full flex-1 px-20 mb-5 mt-5">
-      <form method="GET" action="/api/setup-regular-payment" className="w-full md:w-auto">
+      <form method="GET" action="/api/setup-regular-payment" className="w-full max-w-3xl md:px-5">
         <input type="hidden" name="tag" value={tag ? tag : "general-donation"} />
         <RegularDonationBucket />
 
