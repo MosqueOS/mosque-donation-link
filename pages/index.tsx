@@ -1,6 +1,8 @@
 import DonationForm from "@/components/DonationForm/DonationForm"
 import Footer from "@/components/Footer/Footer"
 import Head from "next/head"
+import DonationTypeSwitch from "@/components/DonationTypeSwitch/DonationTypeSwitch"
+import { useState } from "react"
 
 type Mosque = {
   name: string | undefined
@@ -20,7 +22,20 @@ export async function getStaticProps() {
   }
 }
 
+interface Tab {
+  name: string
+  href: string
+  current: boolean
+}
+
 export default function Home({ mosque }: { mosque: Mosque }) {
+  const [activeTab, setActiveTab] = useState("One-off")
+
+  let tabs: Tab[] = [
+    { name: "One-off", href: "#one-off", current: activeTab === "One-off" },
+    { name: "Monthly", href: "#monthly", current: activeTab === "Monthly" },
+  ]
+
   return (
     <>
       <Head>
@@ -40,6 +55,7 @@ export default function Home({ mosque }: { mosque: Mosque }) {
             <h1 className="mb-4 text-xl md:text-3xl font-bold">{mosque.name}</h1>
           </div>
         </div>
+        <DonationTypeSwitch tabs={tabs} setActiveTab={setActiveTab} />
         <DonationForm mosque={mosque} />
         <Footer />
       </main>
