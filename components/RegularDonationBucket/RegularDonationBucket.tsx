@@ -3,9 +3,9 @@ import { useState } from "react"
 import { RadioGroup } from "@headlessui/react"
 
 type DonationAmount = {
-  id: number
   title: string
   description?: string
+  url: string
 }
 
 const buckets = process.env.NEXT_PUBLIC_REGULAR_DONATION_BUCKETS?.length
@@ -18,7 +18,7 @@ function classNames(...classes: string[]) {
 }
 
 export default function RegularDonationBucket() {
-  const [selectedAmount, selectedAmountChanged] = useState(donationAmounts.length ? 0 : null)
+  const [selectedAmount, selectedAmountChanged] = useState(0)
 
   return (
     <>
@@ -85,7 +85,7 @@ export default function RegularDonationBucket() {
           ))}
         </div>
       </RadioGroup>
-      <input type="hidden" name="amountOption" value={selectedAmount ? selectedAmount : ""} />
+      <input type="hidden" name="amountOption" value={selectedAmount} />
     </>
   )
 }
