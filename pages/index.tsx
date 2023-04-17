@@ -29,6 +29,17 @@ export default function Home({ mosque }: { mosque: Mosque }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main>
+        <div className="flex flex-col items-center justify-center w-full flex-1 px-20 mb-5 mt-5">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={mosque.logo}
+            className="max-w-xs h-25 mb-5 inline-block rounded-lg"
+            alt={`${mosque.name} logo`}
+          />
+          <div className="mb-10 text-center">
+            <h1 className="mb-4 text-xl md:text-3xl font-bold">{mosque.name}</h1>
+          </div>
+        </div>
         <DonationForm mosque={mosque} />
         <Footer />
       </main>
