@@ -8,11 +8,13 @@ type DonationAmount = {
   description?: string
 }
 
-const donationAmounts: DonationAmount[] = [
-  { id: 10, title: "£10", description: "Donate £10" },
-  { id: 20, title: "£20", description: "Donate £20" },
-  { id: 0, title: "Other", description: "Donate a custom amount" },
-]
+const donationAmounts: DonationAmount[] = process.env.NEXT_PUBLIC_DONATION_BUCKETS?.length
+  ? JSON.parse(process.env.NEXT_PUBLIC_DONATION_BUCKETS)
+  : [
+      { id: 10, title: "£10", description: "Donate £10" },
+      { id: 20, title: "£20", description: "Donate £20" },
+      { id: 0, title: "Other", description: "Donate a custom amount" },
+    ]
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ")
