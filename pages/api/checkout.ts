@@ -30,6 +30,7 @@ type Mosque = {
 
 const donationAmounts: any = {
   0: -1,
+  5: 500,
   10: 1000,
   20: 2000,
   30: 3000,
