@@ -42,6 +42,11 @@ export default function DonationBucket() {
 
   return (
     <>
+      <input
+        type="hidden"
+        name="selected_donation_description"
+        value={selectedAmount.description ? selectedAmount.description : "No description"}
+      />
       <RadioGroup value={selectedAmount} onChange={selectedAmountChanged}>
         <RadioGroup.Label className="text-base font-medium text-gray-900">
           Select an amount to donate

@@ -5,6 +5,7 @@ type DonationBody = {
   custom_amount?: string
   uplift?: string
   tag?: string
+  selected_donation_description?: string
 }
 
 type LineItem = {
@@ -52,10 +53,14 @@ export default async function checkoutAPI(req: NextApiRequest, res: NextApiRespo
   let amount: number | null =
     data.amount && donationAmounts[data.amount] ? donationAmounts[data.amount] : null
   let customAmount: number | boolean = data.custom_amount ? parseInt(data.custom_amount) : false
+  let selectedDonationDescription: string | boolean = data.selected_donation_description
+    ? data.selected_donation_description
+    : false
 
   const metadata = {
     donation_url: `${baseUrl}/${data.tag !== "general-donation" ? data.tag : ""}`,
     donation_tag: data.tag,
+    donation_description: selectedDonationDescription,
   }
 
   if (amount === -1 && customAmount) {
